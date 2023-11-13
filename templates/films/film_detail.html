@@ -1,0 +1,10 @@
+{% include 'header_and_footer/header.html' %}
+<h1>Детальная информация о фильме</h1>
+<h2>{{film_id.title}}</h2>
+<img src="{{film_id.image.url}}" alt="">
+<time>{{film_id.year}}</time>
+<p>{{film_id.director}}</p>
+<p>{{film_id.genre}}</p>
+<p>{{film_id.description}}</p>
+<time>{{film_id.created_at}}</time>
+{% include 'header_and_footer/footer.html' %}
