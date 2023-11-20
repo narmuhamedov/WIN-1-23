@@ -20,3 +20,19 @@ class FilmListModel(models.Model):
     class Meta:
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
+
+
+class Afisha(models.Model):
+    film = models.CharField(max_length=100, verbose_name='Название фильма Афиша')
+    time = models.TimeField(verbose_name='Начало фильма')
+    area = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return self.film
+
+
+class Slider(models.Model):
+    slide = models.URLField()
+
+    def __str__(self):
+        return self.slide

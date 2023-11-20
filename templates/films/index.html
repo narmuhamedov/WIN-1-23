@@ -31,54 +31,32 @@
             </tr>
         </thead>
         <tbody>
+            {% for i in afisha_list %}
             <tr>
-                <td>Фильм 1</td>
-                <td>15:00</td>
-                <td>Зал 1</td>
+                <td>{{i.film}}</td>
+                <td>{{i.time}}</td>
+                <td>Зал {{i.area}}</td>
             </tr>
-            <tr>
-                <td>Фильм 2</td>
-                <td>17:30</td>
-                <td>Зал 2</td>
-            </tr>
-            <tr>
-                <td>Фильм 3</td>
-                <td>19:45</td>
-                <td>Зал 3</td>
-            </tr>
-            <tr>
-                <td>Фильм 4</td>
-                <td>21:15</td>
-                <td>Зал 1</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
+<!--Слайдеры-->
 <h2 class="mt-4 text-center">Популярные фильмы</h2>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
+        {% for slide in slider_list %}
+        <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+        {% endfor %}
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active text-center">
-            <img src="http://www.manascinema.com/upload/movies/movie_2675/thumb.jpg" alt="Фильм 1">
+        {% for slide in slider_list %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %} text-center">
+            <img src="{{ slide.slide }}" alt="">
             <div class="carousel-caption">
-                <h3>Фильм 1</h3>
+                <h3></h3>
             </div>
         </div>
-        <div class="carousel-item text-center">
-            <img src="http://www.manascinema.com/upload/movies/movie_2676/thumb.jpg" alt="Фильм 2">
-            <div class="carousel-caption">
-                <h3>Фильм 2</h3>
-            </div>
-        </div>
-        <div class="carousel-item text-center">
-            <img src="http://www.manascinema.com/upload/movies/movie_2677/thumb.jpg" alt="Фильм 3">
-            <div class="carousel-caption">
-                <h3>Фильм 3</h3>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -89,4 +67,5 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
 {% include 'header_and_footer/footer.html' %}
