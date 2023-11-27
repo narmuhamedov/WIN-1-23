@@ -36,3 +36,21 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.slide
+
+
+class ReviewModel(models.Model):
+    STARS = (
+        ('*', '*'),
+        ('* *', '* *'),
+        ('* * *', '* * *'),
+        ('* * * *', '* * * *'),
+        ('* * * * *', '* * * * *')
+    )
+
+    film_list = models.ForeignKey(FilmListModel, on_delete=models.CASCADE,
+                                  related_name='coment_object', null=True)
+    stars = models.CharField(max_length=10, choices=STARS)
+    description = models.TextField()
+
+    def __str__(self):
+        return f'{self.film_list}-{self.stars}'
